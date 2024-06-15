@@ -31,9 +31,9 @@ Here are some photos from my Game:
 
 ## Installation & Deployment 📦
 - Clone the repository .
-- In `bot.js` put yout bot-token
+- In `bot.js` put yout bot-token and your site.
 - In `sealswimmer.js` Put your endpoint api for database management!
-- To deploy i used zeet! Which is free and reliable for time being
+- Run the Bot! thats it!!
 
 
 ## Tools Used 🛠️
