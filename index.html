@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seal Swimmer</title>
+    <link rel="stylesheet" href="sealswimmer.css">
+    
+</head>
+<body>
+    
+    <div id="menu">
+        <h1>Seal Swimmer</h1> <!-- Game Title -->
+        <button onclick="startGame()">Play</button>
+        <button onclick="showScores()">Score</button>
+
+        <button onclick="showPopup('walletMsg')">Wallet</button>
+        <button onclick="showPopup('helpMsg')">Help</button>
+        
+        <button id="leaderButton" onclick="leaderAction()"></button>
+        <button id="storeButton" onclick="storeAction()"></button>
+
+
+
+    
+        
+        <div id="userIdDisplay" style="align-self: flex-start; margin-top: auto;">No ID</div> <!-- User ID display aligned to bottom-left of the menu -->
+    
+     
+    
+    
+    
+    </div>
+    <div id="boardContainer" style="position: relative;">
+        <canvas id="board"></canvas>  <!-- Your game canvas -->
+    </div>
+    
+    <div id="scorePopup">
+        <div id="scoresList"></div>
+        <button id="closeButton" onclick="closePopupscore()">Close</button>
+    </div>
+
+    <div id="powerupPopup" style="display: none;">
+        <p id="powerupText">Choose a Power-Up</p>
+        <button onclick="confirmPowerup('powerbuff1')">PowerBuff 1</button>
+        <button onclick="confirmPowerup('powerbuff2')">PowerBuff 2</button>
+        <button onclick="confirmPowerup('cancel')">Cancel</button>
+    </div>
+    
+    
+    <div id="storePopup">
+        <div class="images-container">
+            <div class="image-block">
+                <div class="image-text">.0006 sol only!</div>
+                <img src="images/2xpoint.png" alt="First Image">
+            </div>
+
+            <div class="image-block">
+                <div class="image-text">.0012 sol only!</div>
+                <img src="images/20point.png" alt="Second Image">
+            </div>
+        </div>
+        <div class="buttons-container">
+            <button id="actionButton1" onclick="action1()">Buy 5</button>
+            <button id="actionButton2" onclick="action2()">Buy 5</button>
+        </div>
+        <button id="closeButton" onclick="closestorePopup()">Close</button>
+    </div>
+    <div id="walletPopup" style="display: none;">
+        <p id="walletMessage">Please send 0.0006 sol to this wallet and provide the Txn Sig:</p>
+        <p id="walletAddress">6nqcKkM12MrrnRPCrrG2TGSwj2whuwkJqS9YLyD2NWFL</p>
+        <button onclick="copyWalletAddress()">Copy</button>
+        <input type="text" id="txnInput" placeholder="Enter Txn Signature">
+        <button onclick="closeWalletPopup()">Close</button>
+        <button onclick="doneWalletPopup()">Done</button>
+    </div>
+    
+    
+    <!-- Success/Error Message Popup -->
+<div id="messagePopup" class="popup" style="display: none;">
+    <p id="messageText">Your message here</p>
+    <button onclick="closeMessagePopup()">Close</button>
+</div>
+
+
+<div id="walletMsg" class="popup">
+    <p>Will be available soon!</p>
+    <button onclick="closePopup('walletMsg')">Close</button>
+</div>
+
+<div id="helpMsg" class="popup">
+    <p>Contact the admin!</p>
+    <button onclick="closePopup('helpMsg')">Close</button>
+</div>
+
+
+
+    <script src="sealswimmer.js"></script>
+    
+</body>
+</html>

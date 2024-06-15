@@ -1,0 +1,411 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 640px;
+    width: 360px;
+    position: relative;
+    z-index: 2;
+    background-image: url("images/sealmenubg.png");
+    background-size: cover;
+    text-align: center;
+}
+
+#userIdDisplay {
+    align-self: flex-start; /* Aligns to the start of the flex container's cross axis */
+    margin-top: auto;       /* Pushes to the bottom of the container */
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#menu h1 {
+    font-size: 55px; /* Large font size for the title */
+    color: transparent; /* Make text color transparent */
+    text-shadow: 3px 3px 4px rgba(0, 98, 255, 0), /* Primary shadow completely transparent */
+                 5px 5px 10px rgba(72, 255, 0, 0); /* Secondary shadow completely transparent */
+    margin-bottom: 20px; /* Space between title and buttons */
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Fun, casual font */
+    animation: funMove 5s infinite alternate; /* Animation for dynamic effect */
+}
+
+/* Keyframes for the text animation */
+@keyframes funMove {
+    0% { transform: translateX(0px); }
+    50% { transform: translateX(10px) rotate(5deg); }
+    100% { transform: translateX(-10px) rotate(-5deg); }
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid #333;
+    border-radius: 5px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #fff;
+    transform: scale(1.1);
+}
+
+button:active {
+    transform: scale(0.9);
+}
+
+
+#board {
+    display: none; /* Initially hide the board */
+    width: 360px;
+    height: 640px;
+    background-image: url("images/sealswimmerbg.png"); /* Background image for the board */
+    position: relative;
+    z-index: 1; /* Lower z-index to keep below the menu */
+}
+
+#scorePopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background-color: white;
+    background-image: linear-gradient(to top right, #f9f9f9, #e6e6e6); /* subtle gradient */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* deeper shadow for more depth */
+    border: 1px solid #ccc; /* subtle border */
+    z-index: 1000;
+    display: none; /* hide by default, show when needed */
+    text-align: center;
+    border-radius: 8px;
+    font-family: 'Arial', sans-serif;
+    color: #333; /* darker text for better readability */
+    text-shadow: 1px 1px 1px #fff; /* soft white shadow for 3D text effect */
+}
+
+@keyframes popup {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5); /* start from a scaled down version */
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+#scorePopup {
+    animation: popup 0.25s ease-out forwards; /* smooth animation to pop up */
+}
+
+#scoresList {
+    max-height: 500px; /* Limit the height of the score list */
+    overflow-y: auto; /* Make it scrollable */
+    padding: 10px 20px; /* Padding inside the scrollable area */
+}
+
+#scoresList p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+#scoresList b {
+    font-weight: bold;
+}
+
+#divider {
+    margin: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+#closeButton {
+    margin-top: 20px;
+    padding: 8px 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#closeButton:hover {
+    background-color: #0056b3;
+}
+
+
+#leaderButton {
+    width: 60px;
+    height: 60px;
+    border-radius: 25px;
+    background-image: url("images/leaderboard.png");
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    position: absolute; /* Set the positioning relative to the nearest positioned ancestor */
+    left: 280px; /* Adjust 'x' position */
+    top: 200px; /* Adjust 'y' position */
+}
+
+
+
+
+button:hover {
+    background-color: #0056b3;
+}
+#scoresList div {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc; /* subtle line between entries */
+    padding: 8px 0; /* more vertical padding for better spacing */
+    transition: background-color 0.3s; /* smooth transition for hover effect */
+}
+
+.score-entry {
+    flex: 1;  /* Each span takes equal width */
+    text-align: center;  /* Center-align the text */
+    padding: 10px;  /* Increased padding for better readability */
+    font-size: 16px; /* larger font size for better visibility */
+    color: #333; /* darker text for better readability */
+}
+
+#scoresList div:nth-child(1) {
+    font-weight: bold;  /* Make the header bold */
+    background-color: hwb(149 79% 2%);  /* darker background for the header */
+    color: white;  /* white text color for contrast */
+    border-bottom: 2px solid #444; /* darker line under the header */
+}
+
+#scoresList div:hover {
+    background-color: #f7f7f7; /* light grey background on hover */
+}
+
+
+#storeButton {
+    width: 60px;
+    height: 58px;
+    border-radius: 38px;
+    background-image: url("images/store.png");
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    position: absolute; /* Set the positioning relative to the nearest positioned ancestor */
+    left: 280px; /* Adjust 'x' position */
+    top: 280px; /* Adjust 'y' position */
+}
+#powerupPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white background */
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    border-radius: 10px; /* Rounded corners */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Light border for subtle definition */
+    z-index: 1500; /* Ensure it's above other elements */
+    display: none; /* Hidden by default, shown via JS */
+    text-align: center; /* Center the text */
+    font-size: 16px; /* Reasonable font size */
+    color: #333; /* Dark grey text for readability */
+    transition: transform 0.3s ease-out, opacity 0.3s ease; /* Smooth animation for appearing */
+}
+
+/* Animation to grow from center */
+@keyframes popupAnimation {
+    0% {
+        transform: translate(-50%, -50%) scale(0.9);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+#powerupPopup.show {
+    display: block;
+    animation: popupAnimation 0.3s ease-out forwards;
+}
+
+button {
+    background-color: rgba(0, 123, 255, 0.8); /* Slightly transparent blue */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: rgba(0, 123, 255, 1); /* Solid color on hover */
+}
+#storePopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px; /* Adjust width as necessary */
+    background-color: white;
+    background-image: linear-gradient(to top right, #f9f9f9, #e6e6e6);
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid #ccc;
+    z-index: 1000;
+    display: none;
+    text-align: center;
+    border-radius: 8px;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    text-shadow: 1px 1px 1px #fff;
+    animation: popup 0.25s ease-out forwards;
+}
+
+.images-container {
+    display: flex;
+    justify-content: space-around; /* Adjusts the spacing between the image blocks */
+    margin-bottom: 6px; /* Space before the action buttons */
+}
+
+.image-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-text {
+    margin-bottom: 5px; /* Space between the text and the image */
+    font-size: 14px; /* Adjust font size as needed */
+    color: #555; /* Color for the text */
+    font-weight: bold; /* Make text bold */
+}
+
+#storePopup img {
+    width: 80%; /* Adjust width to fit side by side within the popup */
+    border-radius: 30%; /* Rounded corners for a square */
+    vertical-align: middle;
+}
+
+
+.buttons-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px; /* Space before the close button */
+}
+
+.buttons-container button {
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer; /* Indicates that the button is clickable */
+}
+
+#closeButton {
+    display: block;
+    margin: 0 auto; /* Centering the button horizontally */
+    padding: 5px 20px; /* Padding for better touch area */
+}
+/* General Popup Styling */
+#walletPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure it sits on top of other content */
+    display: none; /* Hide by default, shown via JavaScript */
+    border-radius: 5px;
+}
+
+/* Wallet address and input field styling */
+#walletPopup p,
+#walletPopup input,
+#walletPopup button {
+    margin: 10px 0;
+}
+
+/* Input field styling */
+#walletPopup input[type="text"] {
+    width: calc(100% - 22px); /* Full width minus padding */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Button styling */
+#walletPopup button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+#walletPopup button:hover {
+    background-color: #0056b3;
+}
+
+#walletPopup #copyButton {
+    padding: 5px 10px;
+    font-size: 0.8em;
+}
+#walletPopup #walletAddress {
+    font-size: 1em; /* Smaller font size for the wallet address */
+    font-family: monospace; /* Optional: Makes the address easier to read */
+    color: #555; /* Optional: Change color for visual distinction */
+}
+#messagePopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background-color: rgb(237, 250, 178);
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(173, 137, 137, 0.1);
+    z-index: 1500; /* Higher than any other element to ensure it is on top */
+    display: none; /* Hidden by default, shown via JavaScript */
+    border-radius: 5px;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccc;
+    background-color: white;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.showUpcoming {
+    display: block;
+}
