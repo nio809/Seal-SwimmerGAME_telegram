@@ -41,4 +41,4 @@ Here are some photos from my Game:
 ![CSS3](https://img.shields.io/badge/-CSS3-blue?style=flat-square&logo=css3)
 ![HTML5](https://img.shields.io/badge/-HTML5-orange?style=flat-square&logo=html5)
 ![Telegram](https://img.shields.io/badge/-Telegram-2CA5E0?style=flat-square&logo=telegram)
-![Brain](/readimg/brainstorm.png)
+
